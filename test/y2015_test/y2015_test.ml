@@ -1,7 +1,7 @@
 open Y2015
 
-let p1_list = [Day01.p1; Day02.p1; Day03.p1; Day04.p1; Day05.p1]
-let p2_list = [Day01.p2; Day02.p2; Day03.p2; Day04.p2; Day05.p2] 
+let p1_list = [Day01.p1; Day02.p1; Day03.p1; Day04.p1; Day05.p1; Day06.p1]
+let p2_list = [Day01.p2; Day02.p2; Day03.p2; Day04.p2; Day05.p2; Day06.p2] 
 
 let int_to_string n =
   Printf.sprintf "%02d" n
@@ -13,12 +13,12 @@ let test_day day_nb =
   Printf.printf "Solution of day %d part 1 is " day_nb;   
   p1 (Read_file.Main.read_lines_string f_name);
   print_newline ();
-  Printf.printf "Solution of day %d part 2 is " day_nb;   
+  Printf.printf "                  part 2 is ";   
   p2 (Read_file.Main.read_lines_string f_name);
   print_newline ()
 
 let _ =
-  let day_nb = 5 in
+  let day_nb = 6 in
   for i = 1 to day_nb do
     test_day i
   done
