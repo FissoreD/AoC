@@ -1,5 +1,7 @@
 (test
  (name y2015_test)
  (libraries read_file y2015 unix)
- (deps day01.txt day02.txt)
+ (deps day01.txt 
+       day02.txt
+       day03.txt)
 )
