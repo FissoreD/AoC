@@ -1,7 +1,7 @@
 open Y2015
 
-let p1_list = [Day01.p1; Day02.p1; Day03.p1]
-let p2_list = [Day01.p2; Day02.p2; Day03.p2] 
+let p1_list = [Day01.p1; Day02.p1; Day03.p1; Day04.p1]
+let p2_list = [Day01.p2; Day02.p2; Day03.p2; Day04.p2] 
 
 let int_to_string n =
   Printf.sprintf "%02d" n
@@ -18,6 +18,7 @@ let test_day day_nb =
   print_newline ()
 
 let _ =
-  test_day 1;
-  test_day 2;
-  test_day 3
+  let day_nb = 4 in
+  for i = 1 to day_nb do
+    test_day i
+  done
