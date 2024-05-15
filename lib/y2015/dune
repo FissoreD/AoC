@@ -1,3 +1,4 @@
 (library
  (name y2015)
+ (libraries str)
 )
