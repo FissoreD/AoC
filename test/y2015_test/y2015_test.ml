@@ -11,10 +11,10 @@ let test_day day_nb =
   let p1 = List.nth p1_list (day_nb - 1) in
   let p2 = List.nth p2_list (day_nb - 1) in
   Printf.printf "Solution of day %d part 1 is " day_nb;   
-  p1 (Read_file.Main.read_lines_string f_name);
+  p1 (Misc.Read_file.read_lines_string f_name);
   print_newline ();
   Printf.printf "                  part 2 is ";   
-  p2 (Read_file.Main.read_lines_string f_name);
+  p2 (Misc.Read_file.read_lines_string f_name);
   print_newline ()
 
 let _ =

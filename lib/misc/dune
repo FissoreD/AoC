@@ -1,4 +1,4 @@
 (library
- (name read_file)
+ (name misc)
  (libraries)
 )
