@@ -1,4 +1,4 @@
 (library
  (name y2015)
- (libraries str)
+ (libraries str yojson core)
 )
