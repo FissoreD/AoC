@@ -1,6 +1,6 @@
 (test
  (name y2015_test)
- (libraries misc y2015 unix)
+ (libraries misc y2015 unix str)
  (deps day01.txt 
        day02.txt
        day03.txt
@@ -15,5 +15,6 @@
        day12.txt
        day13.txt
        day14.txt
+       day15.txt
  )
 )
