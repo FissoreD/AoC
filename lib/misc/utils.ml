@@ -1,26 +1,21 @@
-(** return all ints in a string  *)
-let all_ints ?(only_pos=false) s =
-  let match_rex = Str.regexp
-    (if only_pos then "[0-9][0-9]*" 
-    else "-?[0-9][0-9]*") in
+let find_all rex s =
   let rec aux p = 
     try
-      let x = Str.search_forward match_rex s p in
+      let x = Str.search_forward rex s p in
       let old_match = Str.matched_string s in
-      int_of_string old_match :: aux (x + String.length old_match)
+      old_match :: aux (x + String.length old_match)
     with Not_found -> [] in
   aux 0
 
-let pp_list ?(endL="") ?(sep=" ") ?(delimit=false) f l =
-  let open Format in
-  let hd = if delimit then "[" else "" in
-  let tl = if delimit then "]" else "" in
-  asprintf "%s%a%s%s" hd (pp_print_list ~pp_sep:(fun fmt _ -> pp_print_string fmt sep) 
-    (fun fmt x -> Format.fprintf fmt "%s" (f x))) l tl endL
+(** return all ints in a string  *)
+let all_ints ?(only_pos=false) s =
+  let rex = Str.regexp
+    (if only_pos then "[0-9][0-9]*" 
+    else "-?[0-9][0-9]*") in
+  find_all rex s |> List.map int_of_string
 
-
-let pp_array ?(endL="") ?(sep=" ") ?(delimit=false) f l =
-  pp_list ~endL ~sep ~delimit f (Array.to_list l)
+let rec count m = function 
+  | [] -> 0 | x :: xs -> (if x = m then 1 else 0) + count m xs
 
 (** returns all the tuples with length nb_items summing up to max_sum
     
