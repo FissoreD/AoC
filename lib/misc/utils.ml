@@ -7,12 +7,26 @@ let find_all rex s =
     with Not_found -> [] in
   aux 0
 
+let time_it f =
+  let t1 = Sys.time () in
+  let res = f () in
+  Sys.time () -. t1, res
+
 (** return all ints in a string  *)
 let all_ints ?(only_pos=false) s =
   let rex = Str.regexp
     (if only_pos then "[0-9][0-9]*" 
     else "-?[0-9][0-9]*") in
   find_all rex s |> List.map int_of_string
+
+let no_dup l =
+  let rec aux pref = function
+    | [] -> List.rev pref
+    | hd :: tl ->
+      if List.mem hd pref then aux pref tl 
+      else aux (hd :: pref) tl
+  in 
+  aux [] l
 
 let rec count m = function 
   | [] -> 0 | x :: xs -> (if x = m then 1 else 0) + count m xs
