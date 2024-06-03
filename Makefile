@@ -10,5 +10,7 @@
 		then echo "let p1 _ = ()\n\nlet p2 _ = ()" > lib/y2015/day$(day).ml; \
 	fi;
 	dune build
+	code lib/y2015/day$(day).ml
+	code test/y20$(year)_test/day$(day).txt
 
 .SILENT:
