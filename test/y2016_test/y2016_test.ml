@@ -19,7 +19,7 @@ let test_day day_nb =
   Printf.printf " (%.2f)\n" time
 
 let _ =
-  let day_nb = 3 in
+  let day_nb = 4 in
   (* List.length p1_list in *)
   for i = day_nb to day_nb do
     test_day i
