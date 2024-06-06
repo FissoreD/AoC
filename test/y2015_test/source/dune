@@ -1,0 +1,174 @@
+(test
+ (name day01)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day01.txt)
+ (modules day01)
+)
+
+(test
+ (name day02)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day02.txt)
+ (modules day02)
+)
+
+(test
+ (name day03)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day03.txt)
+ (modules day03)
+)
+
+(test
+ (name day04)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day04.txt)
+ (modules day04)
+)
+
+(test
+ (name day05)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day05.txt)
+ (modules day05)
+)
+
+(test
+ (name day06)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day06.txt)
+ (modules day06)
+)
+
+(test
+ (name day07)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day07.txt)
+ (modules day07)
+)
+
+(test
+ (name day08)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day08.txt)
+ (modules day08)
+)
+
+(test
+ (name day09)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day09.txt)
+ (modules day09)
+)
+
+(test
+ (name day10)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day10.txt)
+ (modules day10)
+)
+
+(test
+ (name day11)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day11.txt)
+ (modules day11)
+)
+
+(test
+ (name day12)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day12.txt)
+ (modules day12)
+)
+
+(test
+ (name day13)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day13.txt)
+ (modules day13)
+)
+
+(test
+ (name day14)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day14.txt)
+ (modules day14)
+)
+
+(test
+ (name day15)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day15.txt)
+ (modules day15)
+)
+
+(test
+ (name day16)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day16.txt)
+ (modules day16)
+)
+
+(test
+ (name day17)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day17.txt)
+ (modules day17)
+)
+
+(test
+ (name day18)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day18.txt)
+ (modules day18)
+)
+
+(test
+ (name day19)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day19.txt)
+ (modules day19)
+)
+
+(test
+ (name day20)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day20.txt)
+ (modules day20)
+)
+
+(test
+ (name day21)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day21.txt)
+ (modules day21)
+)
+
+(test
+ (name day22)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day22.txt)
+ (modules day22)
+)
+
+(test
+ (name day23)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day23.txt)
+ (modules day23)
+)
+
+(test
+ (name day24)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day24.txt)
+ (modules day24)
+)
+
+(test
+ (name day25)
+ (libraries misc y2015 unix str test_utils)
+ (deps ../txt/day25.txt)
+ (modules day25)
+)
