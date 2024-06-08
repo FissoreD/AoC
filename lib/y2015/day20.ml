@@ -13,7 +13,7 @@ let rec get_value ?(max=None) ~coeff tgt n =
   else get_value ~max ~coeff tgt (n + 1) 
 
 let p1 n =
-  (List.hd n |> int_of_string |> get_value ~coeff:10) 1 |> print_int
+  (List.hd n |> int_of_string |> get_value ~coeff:10) 1 |> string_of_int
 
 let p2 n = 
-  (List.hd n |> int_of_string |> get_value ~max:(Some 50) ~coeff:11) 1 |> print_int
+  (List.hd n |> int_of_string |> get_value ~max:(Some 50) ~coeff:11) 1 |> string_of_int

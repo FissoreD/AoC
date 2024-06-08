@@ -20,7 +20,7 @@ let p1 s =
     c_pos := move !c_pos s.[i];
     add_pos c_pos explored
   done;
-  print_int @@ List.length !explored
+  string_of_int @@ List.length !explored
 
 let p2 s = 
   let s = List.hd s in
@@ -32,6 +32,6 @@ let p2 s =
     if i mod 2 == 0 then (c_pos := move !c_pos s.[i]; add_pos c_pos explored)
     else (c_pos' := move !c_pos' s.[i]; add_pos c_pos' explored)
   done;
-  print_int @@ List.length !explored
+  string_of_int @@ List.length !explored
 
 

@@ -24,7 +24,7 @@ let rec count = function
   | (a,b,c) :: tl -> get_val b (count_max a, c) + count tl
 
 let p1 l = 
-  List.map parse_line l |> count |> print_int
+  List.map parse_line l |> count |> string_of_int
 
 let parse_line2 (a, b, _) = List.fold_left (^) "" a, b
 
@@ -44,6 +44,6 @@ let p2 l =
   let open List in
   map parse_line l |> map parse_line2 |> map (fun x -> rotate x (snd x))
     |> find (fun (x,_) -> Str.(string_match (regexp ".*north.*")) x 0) 
-    |> snd |> print_int
+    |> snd |> string_of_int
 
 

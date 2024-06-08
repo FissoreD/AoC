@@ -35,7 +35,7 @@ let parse_input l =
   String.(List.init (length hd) (get hd)) |> List.rev
 
 let p1 l =
-  parse_input l |> next_valid_password |> print_psw |> print_string
+  parse_input l |> next_valid_password |> print_psw
 
 let p2 l =
-  parse_input l |> next_valid_password |> next_valid_password |> print_psw |> print_string
+  parse_input l |> next_valid_password |> next_valid_password |> print_psw

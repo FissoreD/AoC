@@ -36,11 +36,11 @@ let split3 = splitn split2
 let p1 l =
   let l = List.map int_of_string l in
   let goal = sum l / 3 in
-  split3 max_info goal 0 [] [] l |> snd |> print_int
+  split3 max_info goal 0 [] [] l |> snd |> string_of_int
 
 let split4 = splitn split3
 
 let p2 l =
   let l = List.map int_of_string l in
   let goal = sum l / 4 in
-  split4 max_info goal 0 [] [] l |> snd |> print_int
+  split4 max_info goal 0 [] [] l |> snd |> string_of_int

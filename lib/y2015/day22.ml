@@ -52,9 +52,9 @@ let rec run ~hard mv isP c (p,m,l) =
 let p1 l =
   let m = parse_file l in
   let p = {hp=50;dmg=0;mana=500;arm=0} in
-  run ~hard:Fun.id max_int true 0 (p,m,[]) |> print_int
+  run ~hard:Fun.id max_int true 0 (p,m,[]) |> string_of_int
 
 let p2 l =
   let m = parse_file l in
   let p = {hp=50;dmg=0;mana=500;arm=0} in
-  run ~hard:(remove_hp 1) max_int true 0 (p,m,[]) |> print_int
+  run ~hard:(remove_hp 1) max_int true 0 (p,m,[]) |> string_of_int

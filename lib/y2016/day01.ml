@@ -20,7 +20,7 @@ let update (pos, dir) (rot, dist) =
 let p1 l =
   let l = parse_line l in
   let (x,y), _ = List.fold_left update ((0,0),0) l in
-  abs x + abs y |> print_int
+  abs x + abs y |> string_of_int
 
 let rec walk seen l dir pos dist =
   if List.mem pos seen then pos else 
@@ -39,5 +39,5 @@ update_seen seen (pos, dir) l =
 let p2 l = 
   let l = parse_line l in
   let (x,y) = update_seen [] ((0,0), 0) l in
-  abs x + abs y |> print_int
+  abs x + abs y |> string_of_int
 

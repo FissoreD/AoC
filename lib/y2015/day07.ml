@@ -53,11 +53,11 @@ let run_lines l =
   let mem = Mem.empty in
   run_lines mem l |> Mem.find "a"
 
-let p1 l = run_lines (List.map parse_line l) |> print_int
+let p1 l = run_lines (List.map parse_line l) |> string_of_int
 
 let p2 l =
   let l = List.map parse_line l in
   let val_a = run_lines l in
   let l = List.map (function (_, "b") -> (Affect (Int val_a), "b") | a -> a) l in
-  run_lines l |> print_int
+  run_lines l |> string_of_int
 

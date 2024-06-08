@@ -11,11 +11,11 @@ let p1 s =
     appears vowels s && 
       appears consec s && 
       not (appears exclus s) in
-  List.filter is_good_string s |> List.length |> print_int
+  List.filter is_good_string s |> List.length |> string_of_int
 
 let p2 s = 
   let is_good_string s =
     let repeat = Str.regexp "\\(.\\).\\1" in
     let repeat_sep = Str.regexp "\\(..\\).*\\1" in
     appears repeat s && appears repeat_sep s in
-  List.filter is_good_string s |> List.length |> print_int
+  List.filter is_good_string s |> List.length |> string_of_int

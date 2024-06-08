@@ -45,9 +45,9 @@ let find_dist f dist_map l =
 let p1 l =  
   let l = List.map parse_line l in
   let dist_map, cities = make_dist_map l in
-  find_dist min dist_map cities |> print_int
+  find_dist min dist_map cities |> string_of_int
 
 let p2 l =  
   let l = List.map parse_line l in
   let dist_map, cities = make_dist_map l in
-  find_dist max dist_map cities |> print_int
+  find_dist max dist_map cities |> string_of_int

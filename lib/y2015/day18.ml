@@ -31,7 +31,7 @@ let main l to_one =
     evolve !state to_one;
     state := snd !state, fst !state
   done;
-  Array.fold_left (Array.fold_left (+)) 0 (fst !state) |> print_int
+  Array.fold_left (Array.fold_left (+)) 0 (fst !state) |> string_of_int
 
 
 let p1 l = main l []

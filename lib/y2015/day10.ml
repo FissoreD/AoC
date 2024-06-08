@@ -22,6 +22,6 @@ let build_look_and_say l n =
   for _ = 1 to n do res := update_once !res done;
   fst !res
 
-let p1 l = build_look_and_say l 40 |> print_int
+let p1 l = build_look_and_say l 40 |> string_of_int
 
-let p2 l = build_look_and_say l 50 |> print_int
+let p2 l = build_look_and_say l 50 |> string_of_int

@@ -6,7 +6,7 @@ let rec find_int_sum : Yojson.Basic.t -> int = function
 
 let p1 s = 
   let json = Yojson.Basic.from_string (List.hd s) in
-  find_int_sum json |> print_int
+  find_int_sum json |> string_of_int
 
 let rec find_int_sum_no_red : Yojson.Basic.t -> int = function
   | `Assoc s when List.for_all (function (_, `String "red") -> false | _ -> true) s -> 
@@ -17,5 +17,5 @@ let rec find_int_sum_no_red : Yojson.Basic.t -> int = function
 
 let p2 s = 
   let json = Yojson.Basic.from_string (List.hd s) in
-  find_int_sum_no_red json |> print_int
+  find_int_sum_no_red json |> string_of_int
 

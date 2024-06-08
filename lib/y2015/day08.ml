@@ -6,7 +6,7 @@ let p1 l =
   in
   let char_tot = List.fold_left (+) 0 (List.map String.length l) in
   let char_mem = List.fold_left (+) 0 (List.map str_length l) in
-  char_tot - char_mem |> print_int
+  char_tot - char_mem |> string_of_int
 
 let p2 l = 
   let str_length l =
@@ -15,5 +15,5 @@ let p2 l =
   in
   let char_tot = List.fold_left (+) 0 (List.map str_length l) in
   let char_mem = List.fold_left (+) 0 (List.map String.length l) in
-  char_tot - char_mem |> print_int
+  char_tot - char_mem |> string_of_int
 

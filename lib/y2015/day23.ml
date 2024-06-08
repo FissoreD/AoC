@@ -39,9 +39,9 @@ let run inst a =
 
 let p1 l =
   let l = List.map parse_line l |> Array.of_list in
-  run l 0 |> print_int
+  run l 0 |> string_of_int
 
 let p2 l = 
   let l = List.map parse_line l |> Array.of_list in
-  run l 1 |> print_int
+  run l 1 |> string_of_int
 

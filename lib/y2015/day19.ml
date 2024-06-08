@@ -45,7 +45,7 @@ let evolve (map: string list list Map.t) l =
 
 let p1 l =
   let target, map = parse (List.rev l) in
-  evolve map target |> Set.cardinal |> print_int
+  evolve map target |> Set.cardinal |> string_of_int
 
 let rec is_prefix pref str = match pref,str with
   | [], suff -> true, suff
@@ -90,10 +90,10 @@ let p2 l =
      slow due to combinatorial explosion... *)
   (* let target, map = parse (List.rev l) in
   let k, v = Map.fold (fun x -> List.fold_right (fun y (a,b) -> (x::a, y::b))) map ([], []) in
-  involve_rec (Array.of_list k) (Array.of_list v) target |> print_int *)
+  involve_rec (Array.of_list k) (Array.of_list v) target |> string_of_int *)
   (* Here an alternative based on this htt3ps://www.reddit.com/r/adventofcode/comments/3xflz8/comment/cy4etju/ *)
 
   let count_Rn_Ar l = Misc.Utils.(count "Rn" l + count "Ar" l) in
   let count_Y = Misc.Utils.count "Y" in
   let target, _ = parse (List.rev l) in
-  List.length target - count_Rn_Ar target - 2 * count_Y target - 1 |> print_int
+  List.length target - count_Rn_Ar target - 2 * count_Y target - 1 |> string_of_int

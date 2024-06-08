@@ -8,7 +8,7 @@ let rec fill max curr l =
   | hd :: tl -> fill max (curr + hd) tl + fill max curr tl 
 
 let p1 l = 
-  parse_file l |> fill 150 0 |> print_int
+  parse_file l |> fill 150 0 |> string_of_int
 
 let rec min_cont max (min_cnt_nb,min_tot_found as min_) (curr_cnt_nb,curr_capacity) l = 
   if min_cnt_nb < curr_cnt_nb || curr_capacity > max then min_
@@ -22,4 +22,4 @@ let rec min_cont max (min_cnt_nb,min_tot_found as min_) (curr_cnt_nb,curr_capaci
     min_cont max min_ (curr_cnt_nb, curr_capacity) tl
 
 let p2 l =   
-  parse_file l |> min_cont 150 (max_int, 0) (0, 0) |> snd |> print_int
+  parse_file l |> min_cont 150 (max_int, 0) (0, 0) |> snd |> string_of_int

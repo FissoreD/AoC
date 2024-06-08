@@ -18,6 +18,6 @@ let p1 l =
   for _ = 1 to pos2int x y do
     r := next !r
   done;
-  print_int !r
+  string_of_int !r
 
-let p2 _ = print_string "END 2015!"
+let p2 _ = "END 2015!"

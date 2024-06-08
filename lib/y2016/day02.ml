@@ -12,7 +12,7 @@ let rec do_lines to_str ~move p = function
     let pos = List.fold_left move p hd in
     (to_str pos) ^ do_lines to_str ~move pos tl
 
-let p1 l = do_lines string_of_int ~move 5 (parse_line l) |> print_string
+let p1 l = do_lines string_of_int ~move 5 (parse_line l) 
 
 let move p = function
   | "R" -> if (p >= 2 && p < 4) || (p >= 5 && p < 9) || (p >= 10 && p < 12) then p + 1 else p
@@ -24,4 +24,4 @@ let move p = function
       if (p > 5 && p < 9) || (p > 1 && p < 5) then p + 4 else
       if p = 1 || p = 11 then p + 2 else p
 
-let p2 l = do_lines (Printf.sprintf "%X") ~move 5 (parse_line l) |> print_string
+let p2 l = do_lines (Printf.sprintf "%X") ~move 5 (parse_line l) 

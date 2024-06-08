@@ -7,9 +7,9 @@ let rec find_digest ~prefix p n =
 
 let p1 s = 
   let s = List.hd s in
-  print_int @@ find_digest ~prefix:"00000" s 0
+  string_of_int @@ find_digest ~prefix:"00000" s 0
 
 let p2 s =
   let s = List.hd s in
-  print_int @@ find_digest ~prefix:"000000" s 0
+  string_of_int @@ find_digest ~prefix:"000000" s 0
 

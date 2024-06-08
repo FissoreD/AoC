@@ -8,7 +8,7 @@ let valid_triangle (a, b, c) = a + b > c && b + c > a && a + c > b
 
 let p1 l =
   let open List in
-  map parse_line l |> filter valid_triangle |> length |> print_int
+  map parse_line l |> filter valid_triangle |> length |> string_of_int
 
 let rotate_triples (x1, x2, x3) (y1,y2,y3) (z1,z2,z3) =
   let a = if valid_triangle (x1,y1,z1) then 1 else 0 in
@@ -23,4 +23,4 @@ let rec rotate_triangles = function
 
 let p2 l = 
   let open List in
-  map parse_line l |> rotate_triangles |> print_int
+  map parse_line l |> rotate_triangles |> string_of_int

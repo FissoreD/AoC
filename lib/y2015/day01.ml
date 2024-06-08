@@ -12,7 +12,7 @@ let p1 s =
     | ')' -> decr r
     | r -> failwith (Printf.sprintf "Invalid input %c" r)  
   done;
-  print_int !r
+  string_of_int !r
 
 let p2 s =
   let s = get_first_line s in
@@ -25,5 +25,5 @@ let p2 s =
     | r -> failwith (Printf.sprintf "Invalid input %c" r)); 
     incr i
   done;
-  print_int !i
+  string_of_int !i
  

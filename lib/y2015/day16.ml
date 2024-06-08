@@ -30,12 +30,12 @@ let parse_row l =
 
 let get hints l = List.map parse_row l |> List.find (fun (_, y) -> valid_sue hints y) |> fst
 
-let p1 l = get hints l |> print_string
+let p1 = get hints
 
-let p2 l =
+let p2 =
   let new_rel = ["cats", (>);"trees", (>); "goldfish", (<)] in
   let replace hints (key, rel) =
     let _,nb = List.assoc key hints in 
     (key, (rel, nb)) :: List.remove_assoc key hints in
   let hints = List.fold_left replace hints new_rel in
-  get hints l |> print_string
+  get hints

@@ -12,8 +12,8 @@ let get_quantities l =
   let combos = Misc.Utils.all_combo ~max_sum:100 ~nb_items:(List.length infos) in
   List.map (get_value infos) combos
 
-let p1 l = get_quantities l |> get_best |> print_int 
+let p1 l = get_quantities l |> get_best |> string_of_int 
 
 let p2 l =
   get_quantities l |> List.filter (fun e -> List.hd e = 500)
-    |> get_best |> print_int 
+    |> get_best |> string_of_int 

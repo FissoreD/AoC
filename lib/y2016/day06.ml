@@ -16,7 +16,7 @@ let main f l =
   let l = List.map (List.map (Fun.flip String.get 0)) l in
   let l = of_list (List.map of_list l) in
   let rot = rotate_mat l in
-  String.init (length rot) (fun i -> find_max ~f rot.(i)) |> print_string
+  String.init (length rot) (fun i -> find_max ~f rot.(i)) 
 
 let p1 = main ( > )
 let p2 = main ( < )

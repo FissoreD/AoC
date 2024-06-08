@@ -26,7 +26,7 @@ let p1 s =
   let s = List.map parse_line s in
   let grid = Array.init 1000 (fun _ -> Array.init 1000 (fun _ -> 0)) in
   List.iter (switch_grid grid) s;
-  Array.fold_left (Array.fold_left (+)) 0 grid |> print_int
+  Array.fold_left (Array.fold_left (+)) 0 grid |> string_of_int
 
 
 let p2 s =   
@@ -34,5 +34,5 @@ let p2 s =
   let s = List.map (function (a,b,c) -> (match a with "on" -> "+" | "off" -> "-" | _ -> "++"),b,c) s in
   let grid = Array.init 1000 (fun _ -> Array.init 1000 (fun _ -> 0)) in
   List.iter (switch_grid grid) s;
-  Array.fold_left (Array.fold_left (+)) 0 grid |> print_int
+  Array.fold_left (Array.fold_left (+)) 0 grid |> string_of_int
 

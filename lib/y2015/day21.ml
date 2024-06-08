@@ -40,7 +40,7 @@ let rec find_cheap_victory cost monst = function
 let main f def l = 
   let monst = parse_file l in
   let all_pt = choose_items 100 in
-  f def monst all_pt |> print_int
+  f def monst all_pt |> string_of_int
 
 let p1 = main find_cheap_victory max_int
 

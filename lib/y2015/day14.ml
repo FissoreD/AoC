@@ -16,7 +16,7 @@ let go time {speed;march_time;sleep;_} =
 
 let p1 l = 
   let l = List.map parse_line l in
-  List.map (go 2503) l |> List.fold_left max 0 |> print_int
+  List.map (go 2503) l |> List.fold_left max 0 |> string_of_int
 
 let give_bonus l time bonus_acc =
   let max l b = match l with
@@ -41,5 +41,5 @@ let p2 l =
   for i = 1 to 2503 do
     give_bonus l i bonus;
   done;
-  Array.fold_left max 0 bonus |> print_int
+  Array.fold_left max 0 bonus |> string_of_int
 

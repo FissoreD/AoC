@@ -53,11 +53,11 @@ let find_happiness_level map = function
 
 let p1 l =
   let map, names = parse_rows l in
-  find_happiness_level map names |> print_int
+  find_happiness_level map names |> string_of_int
 
 let p2 l = 
   let map, names = parse_rows l in
   let names = "_" :: names in
   let add_map m a = HappyMap.(add ("_"^a) 0 m |> add (a^"_") 0) in
   let map = List.fold_left add_map map names in
-  find_happiness_level map names |> print_int
+  find_happiness_level map names |> string_of_int
