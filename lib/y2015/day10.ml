@@ -1,9 +1,9 @@
-let update_once (len, l) = 
+let update_once (len, l) =
   let posl, occ_nb = ref 1, ref 1 in
   let get_old () = l.(!posl - 1) in
 
   let newl, pos_newl = Array.make (len * 2) ~-1, ref 0 in
-  
+
   let add_newl e = newl.(!pos_newl) <- e; incr pos_newl in
   let update_newl () = add_newl !occ_nb; add_newl (get_old ()); occ_nb := 1 in
 

@@ -6,7 +6,7 @@ let pos l =
   | _ -> failwith "y15/d25: invalid entry"
 
 
-let pos2int x y = 
+let pos2int x y =
   let z = x + y - 1 in
   z * (z+1) / 2 - x - 1
 

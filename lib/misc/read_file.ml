@@ -4,7 +4,7 @@ let read_lines_fun f filename =
   try
     while true; do
       lines := f (input_line chan) :: !lines
-    done; 
+    done;
     !lines
   with End_of_file ->
     close_in chan;
@@ -15,6 +15,6 @@ let read_line_fun f filename =
   | [hd] -> hd
   | _ -> invalid_arg "Read_line error: file should have only one line"
 
-let read_line_string = read_line_fun Fun.id 
-let read_lines_string = read_lines_fun Fun.id 
-let read_line_char_list = read_line_fun 
+let read_line_string = read_line_fun Fun.id
+let read_lines_string = read_lines_fun Fun.id
+let read_line_char_list = read_line_fun

@@ -16,14 +16,14 @@ let count_max l =
 
 let rec get_val n = function
   | _, [] -> n
-  | x :: xs, y :: ys when x = y -> get_val n (xs, ys) 
+  | x :: xs, y :: ys when x = y -> get_val n (xs, ys)
   | _, _ -> 0
 
 let rec count = function
   | [] -> 0
   | (a,b,c) :: tl -> get_val b (count_max a, c) + count tl
 
-let p1 l = 
+let p1 l =
   List.map parse_line l |> count |> string_of_int
 
 let parse_line2 (a, b, _) = List.fold_left (^) "" a, b
@@ -40,10 +40,10 @@ let rec rotate (l,x) = function
   | 0 -> l,x
   | n -> rotate (next l,x) (n-1)
 
-let p2 l = 
+let p2 l =
   let open List in
   map parse_line l |> map parse_line2 |> map (fun x -> rotate x (snd x))
-    |> find (fun (x,_) -> Str.(string_match (regexp ".*north.*")) x 0) 
+    |> find (fun (x,_) -> Str.(string_match (regexp ".*north.*")) x 0)
     |> snd |> string_of_int
 
 

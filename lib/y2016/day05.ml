@@ -33,7 +33,7 @@ let f =
 
 let loop _ f = for _ = 1 to 8 do f () done
 
-let p1 s = build_psw ~f ~loop ~valid_digest (List.hd s) 
+let p1 s = build_psw ~f ~loop ~valid_digest (List.hd s)
 
 let valid_digest d =
   let x = c2i d.[5] in
@@ -46,4 +46,4 @@ let f ar s =
 let rec loop ar f : unit =
   f (); if Array.mem '_' ar then loop ar f
 
-let p2 s = build_psw ~f ~loop ~valid_digest (List.hd s) 
+let p2 s = build_psw ~f ~loop ~valid_digest (List.hd s)

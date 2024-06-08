@@ -1,4 +1,4 @@
-let hints = 
+let hints =
   ["children", ((=), 3);
     "cats", ((=), 7);
     "samoyeds", ((=), 2);
@@ -22,7 +22,7 @@ let parse_row l =
   let repl = Str.global_replace rex {|\1-\2-\3-\4-\5-\6-\7|} l in
   let l = String.split_on_char '-' repl in
   let nb, l = List.hd l, List.tl l in
-  let rec aux = function 
+  let rec aux = function
     | [] -> []
     | [_] -> raise (Invalid_argument "y15/d16")
     | a::b::l -> (a, int_of_string b) :: aux l in
@@ -35,7 +35,7 @@ let p1 = get hints
 let p2 =
   let new_rel = ["cats", (>);"trees", (>); "goldfish", (<)] in
   let replace hints (key, rel) =
-    let _,nb = List.assoc key hints in 
+    let _,nb = List.assoc key hints in
     (key, (rel, nb)) :: List.remove_assoc key hints in
   let hints = List.fold_left replace hints new_rel in
   get hints

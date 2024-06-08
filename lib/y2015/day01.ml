@@ -1,4 +1,4 @@
-let get_first_line = function 
+let get_first_line = function
   | [s] -> s
   | _ -> invalid_arg "day01: invalid arg"
 
@@ -10,7 +10,7 @@ let p1 s =
     match s.[i] with
     | '(' -> incr r
     | ')' -> decr r
-    | r -> failwith (Printf.sprintf "Invalid input %c" r)  
+    | r -> failwith (Printf.sprintf "Invalid input %c" r)
   done;
   string_of_int !r
 
@@ -22,8 +22,7 @@ let p2 s =
     (match s.[!i] with
     | '(' -> incr r
     | ')' -> decr r
-    | r -> failwith (Printf.sprintf "Invalid input %c" r)); 
+    | r -> failwith (Printf.sprintf "Invalid input %c" r));
     incr i
   done;
   string_of_int !i
- 

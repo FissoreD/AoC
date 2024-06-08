@@ -15,7 +15,6 @@ let split_str s =
   | x::xs -> aux (not ext) (if ext then (x::a, b) else (a,x::b)) xs in
   aux true ([],[]) s
 
-
 let valid_string s =
   let l_ext, l_int = split_str s in
   not (List.exists is_abba l_int) && List.exists is_abba l_ext

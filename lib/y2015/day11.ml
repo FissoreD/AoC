@@ -9,12 +9,12 @@ let valid_password l =
     | [] | [_] | [_;_] -> false
     | x::y::z::_ when is_next_chr z y && is_next_chr y x -> true
     | _ :: tl -> consec tl in
-  let rec not_iol = function 
+  let rec not_iol = function
     | [] -> true
     | 'i' :: _ | 'o' :: _ | 'l' :: _ -> false
     | _ :: l -> not_iol l in
-  let rec two_pair = function 
-    | 2 -> fun _ -> true 
+  let rec two_pair = function
+    | 2 -> fun _ -> true
     | n -> function
       | [] | [_] -> false
       | x :: y :: l when x = y -> two_pair (n+1) l
@@ -27,10 +27,10 @@ let rec next_valid_password l =
   if valid_password l then l else next_valid_password l
 
 let print_psw l =
-  let l = List.rev l in 
+  let l = List.rev l in
   List.fold_left (Printf.sprintf "%s%c") "" l
 
-let parse_input l = 
+let parse_input l =
   let hd = List.hd l in
   String.(List.init (length hd) (get hd)) |> List.rev
 

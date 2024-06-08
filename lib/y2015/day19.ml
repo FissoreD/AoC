@@ -3,15 +3,15 @@ module SL = struct
   let rec compare (a: t) (b: t) : int = match a, b with
     | [], [] -> 0
     | [], _ -> 1
-    | _, [] -> -1  
-    | x::xs, y::ys -> match String.compare x y with 
+    | _, [] -> -1
+    | x::xs, y::ys -> match String.compare x y with
       | 0 -> compare xs ys | n -> n
 end
 
 module Set = Set.Make(SL)
 module Map = Map.Make(String)
 
-let str2dna = 
+let str2dna =
   let rex = Str.regexp {|\(e\|[A-Z][a-z]?\)|} in
   Utils.find_all rex
 
@@ -22,7 +22,7 @@ let parse l =
   let l2tuple l =
     let split = String.split_on_char '-' l in
     add (hd split) (hd (tl split) |> str2dna)
-  in 
+  in
   let rex = Str.regexp {|\(.*\) => \(.*\)|} in
   let target = hd l |> str2dna in
   let l1 = tl (tl l) |> map (Str.global_replace rex "\\1-\\2") in
@@ -36,7 +36,7 @@ let rec evolve_aux (add) (get: string -> SL.t list) pref = function
      with Not_found -> ());
     evolve_aux add get (pref @ [hd]) tl
 
-let evolve (map: string list list Map.t) l = 
+let evolve (map: string list list Map.t) l =
   let set = ref Set.empty in
   let add s = set := Set.add s !set in
   let get s = Map.find s map in
@@ -66,11 +66,11 @@ let rec invole_aux add pref l k v = match l with
 let involve add keys values l =
   Array.iter2 (invole_aux add [] l) keys values
 
-let involve_rec keys values l = 
+let involve_rec keys values l =
   let acc = ref 0 in
   let to_explore = ref (Set.singleton l) in
   let seen = ref Set.empty in
-  let add s v = 
+  let add s v =
     if not (Set.mem v !s) then s := Set.add v !s;
     seen := Set.add v !seen
   in

@@ -14,7 +14,7 @@ let go time {speed;march_time;sleep;_} =
   let d, m = (time / time_cycle, time mod time_cycle) in
   total_km * d + speed * min march_time m
 
-let p1 l = 
+let p1 l =
   let l = List.map parse_line l in
   List.map (go 2503) l |> List.fold_left max 0 |> string_of_int
 
@@ -24,11 +24,11 @@ let give_bonus l time bonus_acc =
     | (t,_) :: _ when t < fst b -> [b]
     | (t,_) :: _ when t = fst b -> b :: l
     | _ -> l in
-  let bonus = 
-    List.map (fun x -> go time x,x) l 
+  let bonus =
+    List.map (fun x -> go time x,x) l
     |> List.fold_left max []
     |> List.map snd in
-  let rec find_pos r pos = function 
+  let rec find_pos r pos = function
     | [] -> raise Not_found
     | hd :: _ when hd = r -> pos
     | _ :: tl -> find_pos r (pos+1) tl in
@@ -42,4 +42,3 @@ let p2 l =
     give_bonus l i bonus;
   done;
   Array.fold_left max 0 bonus |> string_of_int
-

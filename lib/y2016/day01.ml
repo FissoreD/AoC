@@ -1,6 +1,6 @@
-let parse_line l = 
+let parse_line l =
   let l = Str.(split (regexp ", ")) (List.hd l) in
-  let split_str l = 
+  let split_str l =
     l.[0], int_of_string (String.sub l 1 (String.length l - 1))
   in List.map split_str l
 
@@ -23,20 +23,20 @@ let p1 l =
   abs x + abs y |> string_of_int
 
 let rec walk seen l dir pos dist =
-  if List.mem pos seen then pos else 
+  if List.mem pos seen then pos else
   if dist = 0 then update_seen seen (pos, dir) l
   else
     let pos' = update_pos pos dir 1 in
     walk (pos :: seen) l dir pos' (dist - 1)
 
 and
-update_seen seen (pos, dir) l = 
+update_seen seen (pos, dir) l =
   if List.mem pos seen then pos else match l with
   | [] -> failwith "y16/d01 no pos visisted twice"
   | (rot, dist) :: tl -> walk seen tl (update_dir dir rot) pos dist
 
 
-let p2 l = 
+let p2 l =
   let l = parse_line l in
   let (x,y) = update_seen [] ((0,0), 0) l in
   abs x + abs y |> string_of_int

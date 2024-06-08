@@ -1,7 +1,7 @@
 type av = {hp:int; dmg:int; mana:int; arm:int}
 type spell = Missile | Drain | Shield | Poison | Recharge
 
-let parse_file l = 
+let parse_file l =
   match List.(map Utils.all_ints l |> map hd) with
   | [hp;dmg] -> {hp;dmg;mana=0;arm=0}
   | _ -> failwith "Invalid arg"
@@ -9,7 +9,7 @@ let parse_file l =
 let is_dead p = p.hp <= 0
 let remove_hp pv p = {p with hp = p.hp - pv}
 
-let apply_spell (p,m) s = match snd s with 
+let apply_spell (p,m) s = match snd s with
   | Missile -> p, remove_hp 4 m
   | Drain -> remove_hp ~-2 p, remove_hp 2 m
   | Shield -> {p with arm=p.arm + 7}, m
@@ -40,14 +40,14 @@ let rec run ~hard mv isP c (p,m,l) =
   else if not isP then
       let p = remove_hp (max 1 (m.dmg - p.arm)) p in
     run ~hard mv (not isP) c (p,m,l)
-  else 
+  else
     let p = {p with arm = 0} in
     let l1 = List.filter (can_do_spell (p,l)) spells in
     if l1 = [] then mv else
-    List.fold_left (fun mv (s,c',t) -> 
-      let p = cast_spell p c' in 
+    List.fold_left (fun mv (s,c',t) ->
+      let p = cast_spell p c' in
       run ~hard mv (not isP) (c+c') (p,m,((t,s)::l))) mv l1
-    
+
 
 let p1 l =
   let m = parse_file l in

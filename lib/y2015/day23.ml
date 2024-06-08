@@ -1,10 +1,10 @@
 type reg = A | B
 
-type instr = 
+type instr =
   | Hlf of reg | Tpl of reg | Inc of reg
   | Jmp of int | Jie of reg * int | Jio of reg * int
 
-let to_reg = function "a" -> A | _ -> B  
+let to_reg = function "a" -> A | _ -> B
 let parse_line l =
   let l = Str.(split (regexp",? ") l) in
   let i = int_of_string in
@@ -31,17 +31,17 @@ let do_instr a b j = function
   | _ -> incr j
 
 let run inst a =
-  let a, b, pos = ref a, ref 0, ref 0 in 
+  let a, b, pos = ref a, ref 0, ref 0 in
   while 0 <= !pos && !pos < Array.length inst do
     do_instr a b pos inst.(!pos);
-  done; 
+  done;
   !b
 
 let p1 l =
   let l = List.map parse_line l |> Array.of_list in
   run l 0 |> string_of_int
 
-let p2 l = 
+let p2 l =
   let l = List.map parse_line l |> Array.of_list in
   run l 1 |> string_of_int
 

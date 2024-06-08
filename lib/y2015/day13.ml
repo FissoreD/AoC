@@ -3,7 +3,7 @@ module HappyMap = Map.Make(String)
 let parse_row map r =
   let r = String.split_on_char ' ' r in
   let fst = List.hd r in
-  let lst = 
+  let lst =
     let lst = List.hd (List.rev r) in
     String.sub lst 0 (String.length lst - 1) in
   let int = int_of_string (List.nth r 3) in
@@ -19,16 +19,16 @@ let parse_rows l =
       aux map seen tl in
   aux HappyMap.empty [] l
 
-let rec rotate_list l = function 
+let rec rotate_list l = function
   | 0 -> l
-  | n -> match l with 
+  | n -> match l with
     | [] -> failwith "n should be smaller then len(l)"
     | x :: xs -> rotate_list (xs @ [x]) (n - 1)
-  
+
 let all_rotation l =
   let rec aux = function
   | 0 -> []
-  | n -> rotate_list l n :: aux (n - 1) 
+  | n -> rotate_list l n :: aux (n - 1)
   in aux (List.length l)
 
 let get_happy_lvl map a b =
@@ -40,10 +40,10 @@ let rec find_happiness_level map fst = function
   | hd :: tl -> find_happiness_level_rot map fst hd tl
 and find_happiness_level_rot map fst h1 tl =
   let rot = all_rotation tl in
-  List.map (function 
+  List.map (function
     | [] -> invalid_arg "y15/d13 -> invalid case (2)"
-    | h2 :: _ as tl -> 
-      get_happy_lvl map h1 h2 + find_happiness_level map fst tl) rot 
+    | h2 :: _ as tl ->
+      get_happy_lvl map h1 h2 + find_happiness_level map fst tl) rot
   |> List.fold_left max min_int
 
 let find_happiness_level map = function
@@ -55,7 +55,7 @@ let p1 l =
   let map, names = parse_rows l in
   find_happiness_level map names |> string_of_int
 
-let p2 l = 
+let p2 l =
   let map, names = parse_rows l in
   let names = "_" :: names in
   let add_map m a = HappyMap.(add ("_"^a) 0 m |> add (a^"_") 0) in
