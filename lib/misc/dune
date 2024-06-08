@@ -1,4 +1,19 @@
-(library
- (name misc)
+(library (name utils)
  (libraries str)
+ (modules utils)
+)
+
+(library (name printers)
+ (libraries str)
+ (modules printers)
+)
+
+(library (name graph)
+ (libraries str)
+ (modules graph)
+)
+
+(library (name read_file)
+ (libraries str)
+ (modules read_file)
 )

@@ -2,7 +2,7 @@ type av = {hp:int; dmg:int; mana:int; arm:int}
 type spell = Missile | Drain | Shield | Poison | Recharge
 
 let parse_file l = 
-  match List.(map Misc.Utils.all_ints l |> map hd) with
+  match List.(map Utils.all_ints l |> map hd) with
   | [hp;dmg] -> {hp;dmg;mana=0;arm=0}
   | _ -> failwith "Invalid arg"
 

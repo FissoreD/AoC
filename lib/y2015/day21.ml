@@ -6,7 +6,7 @@ let armor =  [ 0,0,0; 13,0,1; 31,0,2; 53,0,3; 75,0,4; 102,0,5] (*6*)
 let rings =  [ 0,0,0; 25,1,0; 50,2,0; 100,3,0; 20,0,1; 40,0,2; 80,0,3] (*1+6+15*) 
 
 let parse_file l = 
-  match List.(map Misc.Utils.all_ints l |> map hd) with
+  match List.(map Utils.all_ints l |> map hd) with
   | [hp;dmg;arm] -> {hp;dmg;arm}
   | _ -> failwith "Invalid arg"
 
@@ -29,7 +29,7 @@ let choose_items hp =
   let next_ring_pair st = next_gen_l next_ring_single Fun.id st in
   let next_armor st = next_gen_l next_ring_pair (Fun.const rings) st in
   let next_weapon st = next_gen_l next_armor (Fun.const armor) st in
-  next_weapon empty_st weapon |> Misc.Utils.no_dup
+  next_weapon empty_st weapon |> Utils.no_dup
 
 let rec find_cheap_victory cost monst = function
   | [] -> cost

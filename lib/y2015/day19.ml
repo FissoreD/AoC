@@ -13,7 +13,7 @@ module Map = Map.Make(String)
 
 let str2dna = 
   let rex = Str.regexp {|\(e\|[A-Z][a-z]?\)|} in
-  Misc.Utils.find_all rex
+  Utils.find_all rex
 
 let parse l =
   let open List in
@@ -93,7 +93,7 @@ let p2 l =
   involve_rec (Array.of_list k) (Array.of_list v) target |> string_of_int *)
   (* Here an alternative based on this htt3ps://www.reddit.com/r/adventofcode/comments/3xflz8/comment/cy4etju/ *)
 
-  let count_Rn_Ar l = Misc.Utils.(count "Rn" l + count "Ar" l) in
-  let count_Y = Misc.Utils.count "Y" in
+  let count_Rn_Ar l = Utils.(count "Rn" l + count "Ar" l) in
+  let count_Y = Utils.count "Y" in
   let target, _ = parse (List.rev l) in
   List.length target - count_Rn_Ar target - 2 * count_Y target - 1 |> string_of_int

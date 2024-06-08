@@ -1,4 +1,4 @@
-let parse_line l = Misc.Utils.all_ints l |> List.rev (* calories are put first *)
+let parse_line l = Utils.all_ints l |> List.rev (* calories are put first *)
 
 let get_value =
   List.(fold_left2 (fun a x y -> map2 (fun a x -> a + y * x) a x) [0;0;0;0;0])
@@ -9,7 +9,7 @@ let get_best l =
 
 let get_quantities l = 
   let infos = List.map parse_line l in
-  let combos = Misc.Utils.all_combo ~max_sum:100 ~nb_items:(List.length infos) in
+  let combos = Utils.all_combo ~max_sum:100 ~nb_items:(List.length infos) in
   List.map (get_value infos) combos
 
 let p1 l = get_quantities l |> get_best |> string_of_int 

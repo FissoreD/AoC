@@ -1,3 +1,12 @@
+let find_all_overlap rex s =
+  let rec aux p = 
+    try
+      let x = Str.search_forward rex s p in
+      let old_match = Str.matched_string s in
+      old_match :: aux (x + 1)
+    with Not_found -> [] in
+  aux 0
+
 let find_all rex s =
   let rec aux p = 
     try

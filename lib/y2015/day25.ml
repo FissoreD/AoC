@@ -1,7 +1,7 @@
 let init, coeff, div = (20151125, 252533, 33554393)
 
 let pos l =
-  match Misc.Utils.all_ints (List.hd l) with
+  match Utils.all_ints (List.hd l) with
   | [ x; y ] -> (x, y)
   | _ -> failwith "y15/d25: invalid entry"
 
