@@ -8,6 +8,7 @@ let find_all_overlap rex s =
   aux 0
 
 let find_all rex s =
+  let rex = Str.regexp rex in
   let rec aux p =
     try
       let x = Str.search_forward rex s p in
@@ -23,9 +24,7 @@ let time_it f =
 
 (** return all ints in a string  *)
 let all_ints ?(only_pos=false) s =
-  let rex = Str.regexp
-    (if only_pos then "[0-9][0-9]*"
-    else "-?[0-9][0-9]*") in
+  let rex = (if only_pos then "" else "-?") ^ "[0-9]+" in
   find_all rex s |> List.map int_of_string
 
 let no_dup l =

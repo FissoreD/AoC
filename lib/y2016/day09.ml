@@ -3,7 +3,7 @@ type t = S of string | M of int * int
 let int_len i = String.length (string_of_int i)
 
 let parse_line l =
-  let l = Utils.find_all (Str.regexp {|[0-9]+\|[A-Z]|}) l in
+  let l = Utils.find_all {|[0-9]+\|[A-Z]|} l in
   let rec aux = function
     | [] -> []
     | a :: b :: tl when Utils.is_int a ->

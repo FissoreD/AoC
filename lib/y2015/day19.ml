@@ -11,9 +11,7 @@ end
 module Set = Set.Make(SL)
 module Map = Map.Make(String)
 
-let str2dna =
-  let rex = Str.regexp {|\(e\|[A-Z][a-z]?\)|} in
-  Utils.find_all rex
+let str2dna = Utils.find_all {|\(e\|[A-Z][a-z]?\)|}
 
 let parse l =
   let open List in
