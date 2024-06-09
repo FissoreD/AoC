@@ -40,6 +40,10 @@ let no_dup l =
 let rec count m = function
   | [] -> 0 | x :: xs -> (if x = m then 1 else 0) + count m xs
 
+let is_int s =
+  try let _ = int_of_string s in true
+  with _ -> false
+
 (** returns all the tuples with length nb_items summing up to max_sum
 
     for example:
