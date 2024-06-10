@@ -1,4 +1,6 @@
 {
-  "files.trimTrailingWhitespace": true,
-  "files.insertFinalNewline": true
+  "[ocaml]": {
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": true
+  },
 }
