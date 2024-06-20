@@ -17,3 +17,7 @@
  (libraries str)
  (modules read_file)
 )
+
+(library
+ (name list)
+ (modules list))
