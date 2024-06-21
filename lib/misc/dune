@@ -21,3 +21,7 @@
 (library
  (name list)
  (modules list))
+
+(library
+ (name pos)
+ (modules pos))
