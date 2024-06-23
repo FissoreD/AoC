@@ -1,10 +1,11 @@
 let neigh4 = [ (1, 0); (-1, 0); (0, 1); (0, -1) ]
 let neigh8 = neigh4 @ [ (1, 1); (-1, 1); (1, -1); (-1, -1) ]
 let valid00 (x, y) = x >= 0 && y >= 0
+let valid_size (w, h) ((x, y) as p) = valid00 p && x < w && y < h
 
-let valid_mat m ((x, y) as p) =
+let valid_mat m p =
   let w, h = (List.length (List.hd m), List.length m) in
-  valid00 p && x < w && y < h
+  valid_size (w, h) p
 
 type t = int * int
 
