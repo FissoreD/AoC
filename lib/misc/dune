@@ -23,5 +23,13 @@
  (modules list))
 
 (library
+ (name array)
+ (modules array))
+
+(library
+ (name string)
+ (modules string))
+
+(library
  (name pos)
  (modules pos))
