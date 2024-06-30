@@ -8,9 +8,9 @@
  (modules printers)
 )
 
-(library (name graph)
- (libraries str)
- (modules graph)
+(library (name bfs)
+ (libraries str pos list)
+ (modules bfs)
 )
 
 (library (name read_file)
@@ -25,6 +25,10 @@
 (library
  (name array)
  (modules array))
+
+(library
+ (name tuple)
+ (modules tuple))
 
 (library
  (name string)

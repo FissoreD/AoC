@@ -29,17 +29,6 @@ let all_ints ?(only_pos = false) s =
   let rex = (if only_pos then "" else "-?") ^ "[0-9]+" in
   find_all rex s |> List.map int_of_string
 
-let no_dup l =
-  let rec aux pref = function
-    | [] -> List.rev pref
-    | hd :: tl -> if List.mem hd pref then aux pref tl else aux (hd :: pref) tl
-  in
-  aux [] l
-
-let rec count m = function
-  | [] -> 0
-  | x :: xs -> (if x = m then 1 else 0) + count m xs
-
 let is_int s =
   try
     let _ = int_of_string s in

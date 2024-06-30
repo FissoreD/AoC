@@ -29,7 +29,7 @@ let bfs is_p1 fn =
   in
   while while_cond () do
     List.iter X.add_explored !pos;
-    pos := Utils.no_dup (List.map Pos.get_neigh !pos |> List.flatten);
+    (pos := List.(no_dup (map Pos.get_neigh !pos |> flatten)));
     incr dist;
     if !pos = [] then failwith "y2016/d13 bfs error"
   done;
