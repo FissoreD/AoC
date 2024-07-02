@@ -10,7 +10,7 @@ module type M = sig
 end
 
 module Make (X : M) = struct
-  let explored = ref []
+  let explored = Hashtbl.create 1024
   let size = (Array.length X.mat.(0), Array.length X.mat)
 
   module M : Pos.M = struct
@@ -20,9 +20,9 @@ module Make (X : M) = struct
       let res =
         Pos.valid_size size x
         && (not (List.mem X.mat.(snd x).(fst x) X.obstacle))
-        && not (List.mem x !explored)
+        && not (Hashtbl.mem explored x)
       in
-      explored := x :: !explored;
+      Hashtbl.add explored x 0;
       res
   end
 

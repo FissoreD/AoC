@@ -17,3 +17,17 @@ let no_dup l =
 let rec count m = function
   | [] -> 0
   | x :: xs -> (if x = m then 1 else 0) + count m xs
+
+let permutations l =
+  let rec insert x lst =
+    match lst with
+    | [] -> [ [ x ] ]
+    | h :: t -> (x :: lst) :: List.map (fun el -> h :: el) (insert x t)
+  in
+
+  let rec perm lst =
+    match lst with
+    | [] -> [ lst ]
+    | h :: t -> List.flatten (List.map (insert h) (perm t))
+  in
+  perm l
