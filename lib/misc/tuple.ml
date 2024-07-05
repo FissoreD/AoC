@@ -15,3 +15,7 @@ let to5 = function
 let to6 = function
   | [ a; b; c; d; e; f ] -> (a, b, c, d, e, f)
   | _ -> failwith "Tuple6: invalid entry"
+
+let to7 = function
+  | [ a; b; c; d; e; f; g ] -> (a, b, c, d, e, f, g)
+  | _ -> failwith "Tuple6: invalid entry"
