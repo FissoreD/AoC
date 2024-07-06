@@ -10,3 +10,12 @@ let index_of ar x =
     done;
     !pos
   with Invalid_argument _ -> raise ArrayIndexOutBound
+
+let swap ar p1 p2 =
+  let x = ar.(p1) in
+  ar.(p1) <- ar.(p2);
+  ar.(p2) <- x
+
+let swap_safe ar p1 p2 =
+  let len = Array.length ar in
+  swap ar (p1 mod len) (p2 mod len)
