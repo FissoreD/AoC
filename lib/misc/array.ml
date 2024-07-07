@@ -19,3 +19,6 @@ let swap ar p1 p2 =
 let swap_safe ar p1 p2 =
   let len = Array.length ar in
   swap ar (p1 mod len) (p2 mod len)
+
+let sum = Array.fold_left ( + ) 0
+let count m = Array.fold_left (fun acc e -> acc + if e = m then 1 else 0) 0

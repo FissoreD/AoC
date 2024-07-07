@@ -28,7 +28,7 @@ let str2ascii s =
   l @ [ 17; 31; 73; 47; 23 ]
 
 let hash ar =
-  let add e = Printf.sprintf "%x" e in
+  let add e = Printf.sprintf "%.2x" e in
   let get i j = ar.((i * 16) + j) in
   let rec big_xor i = function
     | 0 -> get i 0
