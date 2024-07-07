@@ -11,7 +11,7 @@ let valid_mat m p =
   let w, h = (List.length (List.hd m), List.length m) in
   valid_size (w, h) p
 
-type t = int * int
+type t = int * int [@@deriving show]
 
 module type M = sig
   val neigh : t list

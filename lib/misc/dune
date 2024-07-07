@@ -36,4 +36,5 @@
 
 (library
  (name pos)
+ (preprocess (pps ppx_deriving.show ppx_deriving.ord))
  (modules pos))
