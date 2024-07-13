@@ -11,7 +11,7 @@ let dist n =
   crown_dist + abs center_dist
 
 let p1 l = dist (int_of_string (List.hd l)) |> string_of_int
-let turn_left = function Pos.U -> Pos.L | L -> D | D -> R | R -> U
+let turn_left = function Pos.D -> Pos.L | L -> U | U -> R | R -> D
 
 let p2 l =
   let goal = int_of_string (List.hd l) in

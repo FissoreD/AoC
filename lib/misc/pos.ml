@@ -3,7 +3,7 @@ let neigh4 = [ (1, 0); (-1, 0); (0, 1); (0, -1) ]
 type neigh4 = U | R | D | L
 
 let get mat (x, y) = mat.(y).(x)
-let dir2pos = function U -> (0, 1) | D -> (0, -1) | L -> (-1, 0) | R -> (1, 0)
+let dir2pos = function U -> (0, -1) | D -> (0, 1) | L -> (-1, 0) | R -> (1, 0)
 let neigh8 = neigh4 @ [ (1, 1); (-1, 1); (1, -1); (-1, -1) ]
 let valid00 (x, y) = x >= 0 && y >= 0
 let valid_size (w, h) ((x, y) as p) = valid00 p && x < w && y < h
