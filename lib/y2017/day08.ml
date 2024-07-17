@@ -5,7 +5,7 @@ let str2op = function
   | ">" -> ( > )
   | "<=" -> ( <= )
   | "<" -> ( < )
-  | x -> failwith x
+  | x -> Utils.error 2017 8 x
 
 let parse l =
   let ios = int_of_string in

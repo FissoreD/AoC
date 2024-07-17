@@ -3,12 +3,11 @@ let init, coeff, div = (20151125, 252533, 33554393)
 let pos l =
   match Utils.all_ints (List.hd l) with
   | [ x; y ] -> (x, y)
-  | _ -> failwith "y15/d25: invalid entry"
-
+  | _ -> Utils.error 2015 25 ""
 
 let pos2int x y =
   let z = x + y - 1 in
-  z * (z+1) / 2 - x - 1
+  (z * (z + 1) / 2) - x - 1
 
 let next n = n * coeff mod div
 

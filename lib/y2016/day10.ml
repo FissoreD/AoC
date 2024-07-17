@@ -7,7 +7,7 @@ let parse_line l =
   match Utils.find_all {|\(bot\)\|\(output\)\|\([0-9]+\)|} l with
   | [ "bot"; n; l; ln; h; hn ] -> (ios n, B (s2ob l ln, s2ob h hn))
   | [ n; "bot"; nb ] -> (ios n, V (ios nb))
-  | _ -> failwith "y2016/d10 invalid input"
+  | _ -> Utils.error 2016 10 ""
 
 let add_bots bots b v =
   match List.assoc_opt b bots with

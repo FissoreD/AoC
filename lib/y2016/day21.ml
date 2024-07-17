@@ -51,7 +51,7 @@ let parse_line is_p1 l : char array -> unit =
   | [ "rotate"; _; _; _; _; _; x ] -> rotate_lett is_p1 x.[0]
   | [ "reverse"; _; x; _; y ] -> reverse (s2i x) (s2i y)
   | [ "move"; _; x; _; _; y ] -> move is_p1 (s2i x) (s2i y)
-  | _ -> failwith "Invalid input"
+  | _ -> Utils.error 2016 21 l
 
 let main s l is_p1 =
   let ar = String.to_array s in

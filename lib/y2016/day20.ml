@@ -1,11 +1,11 @@
-let l2c = function [ a; b ] -> (a, b) | _ -> failwith "Invalid arg"
+let l2c = function [ a; b ] -> (a, b) | _ -> Utils.error 2016 20 ""
 
 let parse l =
   List.map (Utils.all_ints ~only_pos:true) l
   |> List.map l2c |> List.sort compare
 
 let rec find_fin_free min = function
-  | [] -> failwith "No min is present"
+  | [] -> Utils.error 2016 20 "No min is present"
   | (x, _) :: _ when x > min -> min
   | (_, y) :: tl -> find_fin_free (max min (y + 1)) tl
 

@@ -31,3 +31,10 @@ let permutations l =
     | h :: t -> List.flatten (List.map (insert h) (perm t))
   in
   perm l
+
+let uncombine l =
+  let rec aux a b = function
+    | [] -> (List.rev a, List.rev b)
+    | (a', b') :: tl -> aux (a' :: a) (b' :: b) tl
+  in
+  aux [] [] l

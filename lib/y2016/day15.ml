@@ -3,7 +3,7 @@ let enter_disc (nb, size, pos) = (size - ((nb + pos) mod size), size)
 let parse l =
   match Utils.all_ints l with
   | [ n; size; _; pos ] -> (n, size, pos) (* Ignore time since always 0 *)
-  | _ -> failwith "y2016/d15: Invalid arg"
+  | _ -> Utils.error 2016 15 ""
 
 let rec gcd a b = if b = 0 then a else gcd b (a mod b)
 let lcm a b = a * b / gcd a b

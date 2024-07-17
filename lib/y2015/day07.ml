@@ -33,14 +33,14 @@ let to_int_str s =
 
 let parse_unary = function
   | "NOT" -> fun x -> -x - 1
-  | a -> failwith ("Not implemented unary operator " ^ a)
+  | a -> Utils.error 2015 7 ("Not implemented unary operator " ^ a)
 
 let parse_binary = function
   | "AND" -> ( land )
   | "OR" -> ( lor )
   | "LSHIFT" -> ( lsl )
   | "RSHIFT" -> ( lsr )
-  | a -> failwith ("Not implemented binary operator " ^ a)
+  | a -> Utils.error 2015 7 ("Not implemented binary operator " ^ a)
 
 let parse_line l =
   match String.split_on_char ' ' l with
@@ -48,7 +48,7 @@ let parse_line l =
   | [ un; s; "->"; ad ] -> (Unary (parse_unary un, to_int_str s), ad)
   | [ s1; bin; s2; "->"; ad ] ->
       (Binary (parse_binary bin, to_int_str s1, to_int_str s2), ad)
-  | l -> List.cat l |> failwith
+  | _ -> Utils.error 2015 7 l
 
 let run_lines l =
   let mem = Mem.empty in

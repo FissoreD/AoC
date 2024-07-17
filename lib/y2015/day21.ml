@@ -20,7 +20,7 @@ let rings =
 let parse_file l =
   match List.(map Utils.all_ints l |> map hd) with
   | [ hp; dmg; arm ] -> { hp; dmg; arm }
-  | _ -> failwith "Invalid arg"
+  | _ -> Utils.error 2015 21 "Invalid arg"
 
 let rec run_game isP p1 p2 =
   if p1.hp <= 0 then false

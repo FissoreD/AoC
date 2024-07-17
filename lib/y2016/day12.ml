@@ -15,7 +15,7 @@ let parse_row r =
   | [ "jnz"; reg; n ] -> Jnz (s2rv reg, int_of_string n)
   | [ "inc"; reg ] -> Inc (r2i reg)
   | [ "dec"; reg ] -> Dec (r2i reg)
-  | _ -> failwith (Printf.sprintf "y2016/d12 invalid entry: %s" r)
+  | _ -> Utils.error 2016 12 r
 
 let do_instr mem pos =
   let update reg value skip =

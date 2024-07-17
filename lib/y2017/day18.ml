@@ -13,7 +13,7 @@ let parse l =
   | [ "snd"; n ] -> fun ar -> Snd (get ar n)
   | [ "rcv"; c ] -> fun _ -> Rcv (c2i c)
   | [ "jgz"; n; m ] -> fun ar -> if get ar n > 0 then Jnz (get ar m) else Unit
-  | _ -> failwith "Invalid input"
+  | _ -> Utils.error 2017 18 l
 
 let rec exec_prog is_p1 l ar pos snd =
   if pos >= Array.length l || pos < 0 then ((pos, -1), snd)

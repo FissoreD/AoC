@@ -17,7 +17,7 @@ let parse_row r =
   | [ "inc"; reg ] -> Inc (r2i reg)
   | [ "dec"; reg ] -> Dec (r2i reg)
   | [ "tgl"; c ] -> Tgl (r2i c)
-  | _ -> failwith (Printf.sprintf "y2016/d23 invalid entry: %s" r)
+  | _ -> Utils.error 2016 23 r
 
 let do_instr instr mem pos =
   let update reg value skip =
@@ -47,7 +47,7 @@ let do_instr instr mem pos =
       (* Here fast add *)
       (match geti (if geti (-1) = Dec r then -2 else -1) with
       | Inc a -> update a (mem.(a) + mem.(r)) 1
-      | _ -> failwith "Invalid inp");
+      | _ -> Utils.error 2016 23 "");
       mem.(r) <- 0
   | Jnz (Register d, Value -5) ->
       (* Here fast mul: ad-hoc from my input *)

@@ -17,7 +17,7 @@ let build_mat lab =
   let w = List.max (List.map fst poss) + 1 in
   let h = List.max (List.map snd poss) + 1 in
   let rec find_empty = function
-    | [] -> failwith "No empty"
+    | [] -> Utils.error 2016 22 "empty list"
     | a :: _ when used a = 0 -> pos a
     | _ :: l -> find_empty l
   in

@@ -31,7 +31,7 @@ let bfs is_p1 fn =
     List.iter X.add_explored !pos;
     (pos := List.(no_dup (map Pos.get_neigh !pos |> flatten)));
     incr dist;
-    if !pos = [] then failwith "y2016/d13 bfs error"
+    if !pos = [] then Utils.error 2016 3 "bfs error"
   done;
   if is_p1 then !dist else List.length !X.explored
 

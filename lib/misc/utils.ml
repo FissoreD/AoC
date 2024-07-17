@@ -35,8 +35,6 @@ let is_int s =
     true
   with _ -> false
 
-let err y d = failwith (Printf.sprintf "y%d/d%d invalid input" y d)
-
 (** returns all the tuples with length nb_items summing up to max_sum
 
     for example:
@@ -117,3 +115,7 @@ let all_combo_arr ~max_sum ~nb_items : int array list =
   repeat_build_list max_sum l;
 
   !res
+
+exception InvalidInput of int * int * string
+
+let error year day msg = raise @@ InvalidInput (year, day, msg)
