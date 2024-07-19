@@ -1,3 +1,7 @@
+(**
+   returns all the substrings in s matching rex with overlapping
+   for example, [find_all "a.a" "abaca"] returns [\["aba", "aca"\]]
+*)
 let find_all_overlap rex s =
   let rec aux p =
     try
@@ -8,6 +12,10 @@ let find_all_overlap rex s =
   in
   aux 0
 
+(**
+   returns all the substrings in s matching rex (not overlapping)
+   for example, [find_all "a.a" "abaca"] returns [\["aba"\]]
+*)
 let find_all rex s =
   let rex = Str.regexp rex in
   let rec aux p =
@@ -18,6 +26,17 @@ let find_all rex s =
     with Not_found -> []
   in
   aux 0
+
+(** ax + b = 0  *)
+let line_zero (a, b) = -.b /. a
+
+(** ax² + bx + c = 0 → x = (-b ± √(b²-4ac))/2a  *)
+let parabola_zeros (a, b, c) =
+  let delta, den = ((b ** 2.) -. (4. *. a *. c), 2. *. a) in
+  if den = 0. then [ line_zero (b, c) ]
+  else if delta < 0. then []
+  else if delta = 0. then [ -.b /. den ]
+  else [ (-.b +. sqrt delta) /. den; (-.b -. sqrt delta) /. den ]
 
 let time_it f =
   let t1 = Sys.time () in

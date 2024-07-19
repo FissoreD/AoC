@@ -1,5 +1,5 @@
 (library
  (name y2017)
  (preprocess (pps ppx_deriving.show ppx_deriving.ord))
- (libraries re utils printers list array string tuple pos bfs dll)
+ (libraries re utils printers list array string tuple pos bfs dll int)
 )
