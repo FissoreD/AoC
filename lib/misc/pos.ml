@@ -7,6 +7,9 @@ let dir2pos = function U -> (0, -1) | D -> (0, 1) | L -> (-1, 0) | R -> (1, 0)
 let neigh8 = neigh4 @ [ (1, 1); (-1, 1); (1, -1); (-1, -1) ]
 let valid00 (x, y) = x >= 0 && y >= 0
 let valid_size (w, h) ((x, y) as p) = valid00 p && x < w && y < h
+let rot_right = function U -> R | R -> D | D -> L | L -> U
+let rot_left = function U -> L | L -> D | D -> R | R -> U
+let rot_inv = function U -> D | L -> R | R -> L | D -> U
 
 let valid_mat m p =
   let w, h = (List.length (List.hd m), List.length m) in
