@@ -138,3 +138,4 @@ let all_combo_arr ~max_sum ~nb_items : int array list =
 exception InvalidInput of int * int * string
 
 let error year day msg = raise @@ InvalidInput (year, day, msg)
+let dec25_p2 = Printf.sprintf "END %d!"

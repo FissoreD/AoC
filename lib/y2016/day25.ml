@@ -59,4 +59,4 @@ let p1 l =
   let instr = List.map parse_row l |> Array.of_list in
   run_prog instr |> string_of_int
 
-let p2 _ = "END 2016!"
+let p2 _ = Utils.dec25_p2 2016

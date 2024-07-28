@@ -19,4 +19,4 @@ let p1 l =
   done;
   string_of_int !r
 
-let p2 _ = "END 2015!"
+let p2 _ = Utils.dec25_p2 2015

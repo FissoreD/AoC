@@ -10,6 +10,7 @@ ok_year:
 	$(eval bt := $(shell test $(Y) -ge 15; echo $$?))
 	echo $(Y) $(bt) $(lt) | grep "[1-9][0-9] 0 0"
 
+# make create_tests Y=XX where XX is a two digit number
 create_tests:
 	$(eval TEST_FOLDER := test/y20$(Y))
 	$(eval R := $(shell echo $$(seq 1 9)))
@@ -31,8 +32,9 @@ create_tests:
 		if [ ! -e $(TEST_FILE)$$i.txt ]; then touch $(TEST_FILE)$$i.txt; fi; \
 	done
 
+# make create_src Y=XX where XX is a two digit number
 create_src:
-	$(eval cnt := let p1 _ = \"\"\n\nlet p2 _ = \"\")
+	$(eval cnt := let p1 _ = \"\"\nlet p2 _ = \"\")
 	$(eval folder := lib/y20$(Y)/)
 	$(eval R := $(shell echo $$(seq 1 9)))
 	mkdir -p lib/y20$(Y)

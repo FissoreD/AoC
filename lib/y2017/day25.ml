@@ -37,4 +37,4 @@ let p1 l =
   let state, checksum, tm = parse l in
   run tm 0 checksum (Hashtbl.create 1024) 0 state |> string_of_int
 
-let p2 _ = ""
+let p2 _ = Utils.dec25_p2 2017
