@@ -22,3 +22,5 @@ let swap_safe ar p1 p2 =
 
 let sum = Array.fold_left ( + ) 0
 let count m = Array.fold_left (fun acc e -> acc + if e = m then 1 else 0) 0
+let max ?(m = min_int) = Array.fold_left max m
+let min ?(m = max_int) = Array.fold_left min m
