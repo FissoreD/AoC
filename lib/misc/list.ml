@@ -6,6 +6,7 @@ let min = List.fold_left min max_int
 let max = List.fold_left max min_int
 let cat = List.fold_left ( ^ ) ""
 let rec sub l = function 0 -> [] | x -> hd l :: sub (tl l) (x - 1)
+let remove e = List.filter (( <> ) e)
 
 let no_dup l =
   let rec aux pref = function
