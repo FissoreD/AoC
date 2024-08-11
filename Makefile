@@ -1,6 +1,7 @@
 NB := $(shell (seq 1 25))
 
-create: ok_year
+# make create Y=XX where XX is a two digit number
+create:
 	$(MAKE) create_src create_tests
 	dune build
 
@@ -8,32 +9,23 @@ create: ok_year
 ok_year:
 	$(eval lt := $(shell test $(Y) -le $$(date +%y); echo $$?))
 	$(eval bt := $(shell test $(Y) -ge 15; echo $$?))
-	echo $(Y) $(bt) $(lt) | grep "[1-9][0-9] 0 0"
+	@(echo $(Y) $(bt) $(lt) | grep "[1-9][0-9] 0 0" > /dev/null) || (echo "Invalid year" $(Y) "; should be between 15 and current_year" && false)
 
 # make create_tests Y=XX where XX is a two digit number
-create_tests:
+create_tests: ok_year
 	$(eval TEST_FOLDER := test/y20$(Y))
 	$(eval R := $(shell echo $$(seq 1 9)))
 	$(eval dune_file := $(TEST_FOLDER)/source/dune)
+	@mkdir -p $(TEST_FOLDER)/expected
 	@mkdir -p $(TEST_FOLDER)/source
 	@mkdir -p $(TEST_FOLDER)/txt
 	> $(dune_file)
-	for i in $(R); do \
-		echo "(test\n (name day0$$i)\n (libraries y20$(Y) test_utils)\n (deps ../txt/day0$$i.txt)\n (modules day0$$i)\n)\n" >> $(dune_file); \
-		echo "open Y20$(Y)\n\nlet _ = Test_utils.test_day $(Y) $$i Day0$$i.p1 Day0$$i.p2" > $(TEST_FOLDER)/source/day0$$i.ml; \
-		$(eval TEST_FILE := $(TEST_FOLDER)/txt/day0) \
-		if [ ! -e $(TEST_FILE)$$i.txt ]; then touch $(TEST_FILE)$$i.txt; fi; \
-	done
+	for i in $(R); do $(call BUILD_TEST,"0",$$i) done
 	$(eval R := $(shell echo $$(seq 10 25)))
-	for i in $(R); do \
-		echo "(test\n (name day$$i)\n (libraries y20$(Y) test_utils)\n (deps ../txt/day$$i.txt)\n (modules day$$i)\n)\n" >> $(dune_file); \
-		echo "open Y20$(Y)\n\nlet _ = Test_utils.test_day $(Y) $$i Day$$i.p1 Day$$i.p2" > $(TEST_FOLDER)/source/day$$i.ml; \
-		$(eval TEST_FILE := $(TEST_FOLDER)/txt/day) \
-		if [ ! -e $(TEST_FILE)$$i.txt ]; then touch $(TEST_FILE)$$i.txt; fi; \
-	done
+	for i in $(R); do $(call BUILD_TEST,"",$$i) done
 
 # make create_src Y=XX where XX is a two digit number
-create_src:
+create_src: ok_year
 	$(eval cnt := let p1 _ = \"\"\nlet p2 _ = \"\")
 	$(eval folder := lib/y20$(Y)/)
 	$(eval R := $(shell echo $$(seq 1 9)))
@@ -49,18 +41,33 @@ create_src:
 	 	echo "(library\n (name y20$(Y))\n)" > $(folder)/dune; \
 	fi
 
+define BUILD_TEST
+	$(eval DAY := $(1)$$(2)) \
+	echo "$(call DUNE_TEST_RULE,${DAY})" >> $(dune_file); \
+	echo "$(call DUNE_TEST_BODY,$(DAY))" > $(TEST_FOLDER)/source/day${DAY}.ml; \
+	$(eval EXPECTED_FILE := $(TEST_FOLDER)/expected/day) \
+	if [ ! -e $(TEST_FILE)${DAY}.txt ]; then touch $(TEST_FOLDER)/txt/day${DAY}.txt; fi; \
+	if [ ! -e $(EXPECTED_FILE)${DAY}.p1.txt ]; then touch $(EXPECTED_FILE)${DAY}.p1.txt; fi; \
+	if [ ! -e $(EXPECTED_FILE)${DAY}.p2.txt ]; then touch $(EXPECTED_FILE)${DAY}.p2.txt; fi;
+endef
 
-%:
-	$(eval OK := $(shell echo $@ | sed 's/^[1-9][1-9]\/[0-9][0-9]$$/OK/'))
-	if [ "$(OK)" != "OK" ]; \
-		then echo "Invlid input" "Input should be YY/DD" && exit 1; \
-	fi
-	$(eval year := $(shell echo $@ | sed 's/^\([1-9][1-9]\)...$$/\1/'))
-	$(eval day := $(shell echo $@ | sed 's/^...\([0-9][0-9]\)$$/\1/'))
-	touch test/y20$(year)_test/day$(day).txt
-	if [ ! -e lib/y2015/day$(day).ml ]; \
-		then echo "let p1 _ = \"\"\n\nlet p2 _ = \"\"" > lib/y2015/day$(day).ml; \
-	fi;
-	dune build
-	code lib/y2015/day$(day).ml
-	code test/y20$(year)_test/day$(day).txt
+define DUNE_TEST_RULE
+(test\
+	(name day$1)\
+	(libraries y20$(Y) test_utils)\
+	(deps ../txt/day$1.txt ../expected/day$1.p1.txt ../expected/day$1.p2.txt)\
+	(modules day$1))\
+
+endef
+
+define DUNE_TEST_BODY
+open Y20$(Y)\n\
+open Test_utils\n\
+\n\
+let _ = Test_utils.test_expected $(Y) $$i (module Day$1 : M)
+endef
+
+export DUNE_TEST_RULE
+export DUNE_TEST_BODY
+
+.SILENT:create_src create_tests
