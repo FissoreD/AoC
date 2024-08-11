@@ -23,6 +23,9 @@ module type M = sig
 end
 
 let add (x, y) (x', y') = (x + x', y + y')
+let sub (x, y) (x', y') = (x - x', y - y')
+let map f (x, y) = (f x, f y)
+let mul n pos = map (Int.mul n) pos
 let add_dir d = add (dir2pos d)
 
 module Make (M : M) = struct
@@ -32,3 +35,8 @@ end
 
 let compare (x, y) (x', y') =
   match compare x x' with 0 -> compare y y' | n -> n
+
+(** The manhattan distance between two positions  *)
+let dist a b =
+  let a, b = map abs (sub a b) in
+  a + b
