@@ -1,6 +1,7 @@
 {
   "[ocaml]": {
     "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
     "files.insertFinalNewline": true
   },
 }
