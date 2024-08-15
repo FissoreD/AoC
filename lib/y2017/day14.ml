@@ -23,7 +23,7 @@ let give_sets mat =
   for y = 0 to 127 do
     for x = 0 to 127 do
       if Pos.get mat (x, y) = 1 then
-        let neigh = List.map (Pos.add (x, y)) Pos.neigh4 in
+        let neigh = List.map (Pos.add (x, y)) Pos.dir4 in
         List.iter (union (x, y)) (List.filter is_valid neigh)
     done
   done;

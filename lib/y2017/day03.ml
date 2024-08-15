@@ -17,7 +17,7 @@ let p2 l =
   let goal = int_of_string (List.hd l) in
   let tbl = Hashtbl.create 1024 in
   let get p = Hashtbl.find_opt tbl p |> Option.value ~default:0 in
-  let get_val p = List.(sum (map (fun x -> get (Pos.add x p)) Pos.neigh8)) in
+  let get_val p = List.(sum (map (fun x -> get (Pos.add x p)) Pos.dir8)) in
   let to_turn (x, y) =
     (abs x = abs y && (x + y <> 0 || y >= 0)) || (x + y = 1 && x > 0)
   in

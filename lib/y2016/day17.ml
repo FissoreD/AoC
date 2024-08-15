@@ -2,7 +2,7 @@ let size = (4, 4)
 let dest = (3, 3)
 
 module M : Pos.M = struct
-  let neigh = Pos.neigh4
+  let neigh = Pos.dir4
   let valid = Pos.valid_size size
 end
 

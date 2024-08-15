@@ -38,7 +38,7 @@ let p2 l =
 
     let mat = m
     let obstacle = [ '#' ]
-    let neigh = Pos.neigh4
+    let neigh = Pos.dir4
     let goal Bfs.{ to_exp; _ } = not (List.mem (w, 0) to_exp)
   end in
   let module Bfs = Bfs.Make (M) in

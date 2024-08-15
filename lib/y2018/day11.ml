@@ -6,7 +6,7 @@ let pow_lvl serial_nb (x, y) =
 
 let pow_lvl_sum serial_nb pos =
   let center = Pos.add (1, 1) pos in
-  center :: List.map (Pos.add center) Pos.neigh8
+  center :: List.map (Pos.add center) Pos.dir8
   |> List.map (pow_lvl serial_nb)
   |> List.sum
 

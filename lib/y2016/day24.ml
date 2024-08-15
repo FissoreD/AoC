@@ -15,7 +15,7 @@ let dist mat b a =
 
     let mat = mat
     let obstacle = [ '#' ]
-    let neigh = Pos.neigh4
+    let neigh = Pos.dir4
     let goal Bfs.{ to_exp; _ } = not (List.mem b to_exp)
   end) in
   Bfs.bfs a

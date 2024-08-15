@@ -12,7 +12,7 @@ struct
     let f x y = (x * x) + (3 * x) + (2 * x * y) + y + (y * y) in
     f x y + S.fn |> ones |> fun x -> x mod 2 = 0
 
-  let neigh = Pos.neigh4
+  let neigh = Pos.dir4
   let valid p = Pos.valid00 p && is_free p && not (List.mem p !explored)
 end
 

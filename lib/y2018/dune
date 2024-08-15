@@ -3,3 +3,4 @@
  (preprocess (pps ppx_deriving.show ppx_deriving.ord))
  (libraries re utils printers list array string tuple pos bfs dll int)
 )
+(env (dev (flags (:standard -w -9))))
