@@ -10,15 +10,8 @@ let build_mat l =
   (!pos, !z, Array.init h (fun y -> Array.init w (fun x -> build x y)))
 
 let dist mat b a =
-  let module Bfs = Bfs.Make (struct
-    type t = char
-
-    let mat = mat
-    let obstacle = [ '#' ]
-    let neigh = Pos.dir4
-    let goal Bfs.{ to_exp; _ } = not (List.mem b to_exp)
-  end) in
-  Bfs.bfs a
+  let conitnue Bfs.{ to_exp; _ } = List.mem b to_exp in
+  Bfs.bfs Pos.dir4 [ '#' ] mat conitnue a
 
 let all_dist mat pos =
   let dists = Hashtbl.create 1024 in

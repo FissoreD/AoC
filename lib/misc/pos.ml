@@ -39,12 +39,15 @@ let mul n pos = map (Int.mul n) pos
 let add_dir d = add (dir2pos d)
 
 module Make (M : M) = struct
-  let get_neigh p = List.map (add p) M.neigh |> List.filter M.valid
+  let neigh = M.neigh
   let valid = M.valid
+  let get_neight p = List.map (add p) M.neigh |> List.filter M.valid
 end
 
 let compare (x, y) (x', y') =
-  match compare x x' with 0 -> compare y y' | n -> n
+  match compare y y' with 0 -> compare x x' | n -> n
+
+let sort_list : t list -> t list = List.sort compare
 
 (** The manhattan distance between two positions  *)
 let dist a b =

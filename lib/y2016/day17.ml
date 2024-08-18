@@ -38,7 +38,7 @@ let bfs while_cond is_p1 hash =
   let pos = ref [ ((0, 0), hash) ] in
   while not (while_cond !pos) do
     if (not is_p1) && List.mem_assoc dest !pos then max_len := !dist;
-    pos := List.map (give_neigh P.get_neigh) !pos |> List.flatten;
+    pos := List.map (give_neigh P.get_neight) !pos |> List.flatten;
     incr dist
   done;
   if is_p1 then String.sub (List.assoc dest !pos) hash_len !dist

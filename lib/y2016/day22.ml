@@ -33,13 +33,5 @@ let build_mat lab =
 *)
 let p2 l =
   let w, empty, m = build_mat (parse l) in
-  let module M : Bfs.M = struct
-    type t = char
-
-    let mat = m
-    let obstacle = [ '#' ]
-    let neigh = Pos.dir4
-    let goal Bfs.{ to_exp; _ } = not (List.mem (w, 0) to_exp)
-  end in
-  let module Bfs = Bfs.Make (M) in
-  Bfs.bfs empty + ((w - 1) * 5) |> string_of_int
+  let continue Bfs.{ to_exp; _ } = List.mem (w, 0) to_exp in
+  Bfs.bfs Pos.dir4 [ '#' ] m continue empty + ((w - 1) * 5) |> string_of_int
