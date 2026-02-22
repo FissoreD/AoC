@@ -41,6 +41,9 @@ create_src: ok_year
 	 	echo "(library\n (name y20$(Y))\n)" > $(folder)/dune; \
 	fi
 
+create_local_switch:
+	opam switch create . --deps-only
+
 define BUILD_TEST
 	$(eval DAY := $(1)$$(2)) \
 	echo "$(call DUNE_TEST_RULE,${DAY})" >> $(dune_file); \

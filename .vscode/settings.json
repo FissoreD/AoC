@@ -4,4 +4,8 @@
     "editor.formatOnSaveMode": "file",
     "files.insertFinalNewline": true
   },
+  // "ocaml.sandbox": {
+  //   "kind": "opam",
+  //   "switch": "."
+  // },
 }

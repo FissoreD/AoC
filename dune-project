@@ -2,7 +2,7 @@
 
 (name main)
 
-(generate_opam_files true)
+; (generate_opam_files true)
 
 (source
  (github username/reponame))
