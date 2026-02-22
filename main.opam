@@ -10,16 +10,17 @@ homepage: "https://github.com/username/reponame"
 doc: "https://url/to/documentation"
 bug-reports: "https://github.com/username/reponame/issues"
 depends: [
-  "ocaml"
-  "dune" {>= "3.10"}
+  "ocaml" {= "4.14.0"}
+  "dune"
   "odoc" {with-doc}
-  "ppx_inline_test" {>= "v0.17.0"}
-  "re"   {>= "1.14"}
-  "ppx_deriving" {>= "6.1.1"}
-  "core"  {>= "v0.17.1"}
-  "yojson" {>= "3.0.0"}
-  "ocaml-lsp-server" {>= "1.24.0"}
-  "ocamlformat"      {>= "0.28.1"}
+  "ppx_inline_test"
+  "re"  
+  "ppx_deriving"
+  "core" 
+  "yojson"
+  "ocaml-lsp-server"
+  "ocamlformat"
+  "utop"
 ]
 build: [
   ["dune" "subst"] {dev}
