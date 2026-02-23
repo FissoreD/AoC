@@ -14,6 +14,7 @@ val dir2pos : dir4 -> t
 val ch2dir : char -> dir4
 val valid00 : t -> bool
 val valid_mat : 'a list list -> t -> bool
+val valid_arr : 'a array array -> t -> bool
 val valid_size : t -> t -> bool
 val rot_right : dir4 -> dir4
 val rot_left : dir4 -> dir4

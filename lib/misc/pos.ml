@@ -25,6 +25,10 @@ let valid_mat m p =
   let w, h = (List.length (List.hd m), List.length m) in
   valid_size (w, h) p
 
+let valid_arr m p =
+  let w, h = (Array.length m.(0), Array.length m) in
+  valid_size (w, h) p
+
 type t = int * int [@@deriving show]
 
 module type M = sig
@@ -49,7 +53,7 @@ let compare (x, y) (x', y') =
 
 let sort_list : t list -> t list = List.sort compare
 
-(** The manhattan distance between two positions  *)
+(** The manhattan distance between two positions *)
 let dist a b =
   let a, b = map abs (sub a b) in
   a + b
